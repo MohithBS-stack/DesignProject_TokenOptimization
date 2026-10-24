@@ -14,7 +14,7 @@ export const App: React.FC = () => {
   const isOllamaReady = Boolean(ollamaStatus?.connected && ollamaStatus?.model_installed);
 
   return (
-    <div className="min-h-screen bg-[#060a12] text-slate-200 flex flex-col font-sans selection:bg-cyan-500/20 selection:text-cyan-300">
+    <div className="min-h-screen bg-[#F3F0E8] text-[#171717] flex flex-col font-sans selection:bg-[#F2C230] selection:text-[#171717]">
       <Header
         apiStatus={apiStatus}
         ollamaStatus={ollamaStatus}
@@ -28,17 +28,17 @@ export const App: React.FC = () => {
           <HomePage />
         )}
       </main>
-      <footer className="border-t border-white/[0.06] bg-[#070c17] py-6 text-xs text-slate-500">
+      <footer className="border-t-2 border-[#171717] bg-[#FFFFFF] py-6 text-xs text-[#4A4A4A]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <span className="font-semibold text-slate-300">Argus</span>
-            <span className="text-slate-600">&bull;</span>
-            <span className="text-slate-400">Understand. Optimize. Execute.</span>
+            <span className="font-black text-[#171717] uppercase tracking-wider font-heading">Argus</span>
+            <span className="text-[#171717] font-bold">&bull;</span>
+            <span className="text-[#4A4A4A] font-mono uppercase tracking-wide text-[11px]">Understand. Optimize. Execute.</span>
           </div>
-          <div className="flex items-center gap-4 font-mono text-[11px] text-slate-400">
+          <div className="flex items-center gap-4 font-mono text-[11px] text-[#4A4A4A] uppercase tracking-wider">
             <span>Phase 3: Real Local Inference</span>
-            <span className="text-slate-600">&bull;</span>
-            <span className={isOllamaReady ? 'text-cyan-400' : 'text-slate-400'}>
+            <span className="text-[#171717] font-bold">&bull;</span>
+            <span className={`font-bold ${isOllamaReady ? 'text-[#2457C5]' : 'text-[#E53935]'}`}>
               Local LLM: {isOllamaReady ? `Active (${ollamaStatus?.model})` : 'Offline'}
             </span>
           </div>
@@ -49,3 +49,4 @@ export const App: React.FC = () => {
 };
 
 export default App;
+

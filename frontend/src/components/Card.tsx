@@ -19,15 +19,15 @@ export const Card: React.FC<CardProps> = ({
 }) => {
   return (
     <div
-      className={`rounded-xl border border-white/[0.08] bg-[#0c1424] p-5 shadow-lg shadow-black/20 ${
-        hoverEffect ? 'transition-all hover:border-cyan-500/30 hover:bg-[#0f192d]' : ''
+      className={`border-2 border-[#171717] bg-[#FFFFFF] p-5 shadow-[3px_3px_0px_#171717] ${
+        hoverEffect ? 'transition-all hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[5px_5px_0px_#171717]' : ''
       } ${className}`}
     >
       {(title || badge) && (
-        <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/[0.06]">
+        <div className="flex items-center justify-between pb-3 mb-4 border-b-2 border-[#171717]">
           <div>
-            {title && <h3 className="text-base font-semibold text-slate-100">{title}</h3>}
-            {subtitle && <p className="text-xs text-slate-400 mt-0.5">{subtitle}</p>}
+            {title && <h3 className="text-base font-bold tracking-tight text-[#171717] uppercase">{title}</h3>}
+            {subtitle && <p className="text-xs text-[#717171] mt-0.5 font-mono">{subtitle}</p>}
           </div>
           {badge && <div>{badge}</div>}
         </div>
@@ -36,3 +36,4 @@ export const Card: React.FC<CardProps> = ({
     </div>
   );
 };
+

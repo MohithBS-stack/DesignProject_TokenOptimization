@@ -32,9 +32,24 @@ export function useOllamaStatus(autoCheck: boolean = true): UseOllamaStatusRetur
   }, []);
 
   useEffect(() => {
-    if (autoCheck) {
+    if (!autoCheck) return;
+
+    void checkStatus();
+
+    const interval = setInterval(() => {
       void checkStatus();
-    }
+    }, 10000);
+
+    const onFocus = () => {
+      void checkStatus();
+    };
+
+    window.addEventListener('focus', onFocus);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('focus', onFocus);
+    };
   }, [autoCheck, checkStatus]);
 
   return { status, isLoading, checkStatus };

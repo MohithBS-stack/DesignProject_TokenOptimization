@@ -19,22 +19,24 @@ export const Header: React.FC<HeaderProps> = ({
   const isOllamaReady = Boolean(ollamaStatus?.connected && ollamaStatus?.model_installed);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/[0.08] bg-[#070c17]/95 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b-2 border-[#171717] bg-[#FFFFFF] shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="h-16 flex items-center justify-between gap-4">
           {/* Brand & Identity */}
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-cyan-950/80 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0">
-              <Shield className="w-5 h-5" />
+            <div className="w-9 h-9 bg-[#171717] border-2 border-[#171717] shadow-[2px_2px_0px_#E53935] flex items-center justify-center text-[#FFFFFF] shrink-0">
+              <Shield className="w-5 h-5 text-[#F2C230]" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-bold text-slate-100 tracking-tight text-lg">Argus</span>
-                <span className="text-[10px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded bg-cyan-950 text-cyan-400 border border-cyan-500/20">
+                <span className="font-black text-[#171717] tracking-wider text-xl font-heading uppercase">
+                  Argus
+                </span>
+                <span className="text-[10px] font-mono font-bold uppercase tracking-widest px-2 py-0.5 bg-[#F2C230] text-[#171717] border border-[#171717] shadow-[1px_1px_0px_#171717]">
                   Phase 3
                 </span>
               </div>
-              <p className="text-[11px] text-slate-400 hidden sm:block tracking-wide">
+              <p className="text-[11px] text-[#4A4A4A] hidden sm:block tracking-widest uppercase font-mono font-medium">
                 Understand. Optimize. Execute.
               </p>
             </div>
@@ -42,29 +44,29 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Navigation Tabs */}
           {onTabChange && (
-            <nav className="flex items-center gap-1 bg-[#0b1324] p-1 rounded-lg border border-white/5 text-xs font-medium">
+            <nav className="flex items-center gap-1.5 bg-[#E7E3D9] p-1 border-2 border-[#171717] shadow-[2px_2px_0px_#171717] text-xs font-bold uppercase tracking-wider">
               <button
                 type="button"
                 onClick={() => onTabChange('workspace')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all cursor-pointer ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 transition-all cursor-pointer ${
                   activeTab === 'workspace'
-                    ? 'bg-cyan-500 text-navy-950 font-semibold shadow-sm'
-                    : 'text-slate-400 hover:text-slate-100 hover:bg-white/5'
+                    ? 'bg-[#171717] text-[#FFFFFF] border-2 border-[#171717] shadow-[1px_1px_0px_#2457C5]'
+                    : 'text-[#171717] hover:bg-[#FFFFFF] border-2 border-transparent'
                 }`}
               >
-                <Sparkles className="w-3.5 h-3.5" />
+                <Sparkles className={`w-3.5 h-3.5 ${activeTab === 'workspace' ? 'text-[#F2C230]' : 'text-[#171717]'}`} />
                 <span>Workspace</span>
               </button>
               <button
                 type="button"
                 onClick={() => onTabChange('system')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all cursor-pointer ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 transition-all cursor-pointer ${
                   activeTab === 'system'
-                    ? 'bg-cyan-500 text-navy-950 font-semibold shadow-sm'
-                    : 'text-slate-400 hover:text-slate-100 hover:bg-white/5'
+                    ? 'bg-[#171717] text-[#FFFFFF] border-2 border-[#171717] shadow-[1px_1px_0px_#E53935]'
+                    : 'text-[#171717] hover:bg-[#FFFFFF] border-2 border-transparent'
                 }`}
               >
-                <Activity className="w-3.5 h-3.5" />
+                <Activity className={`w-3.5 h-3.5 ${activeTab === 'system' ? 'text-[#E53935]' : 'text-[#171717]'}`} />
                 <span>System Status</span>
               </button>
             </nav>
@@ -74,10 +76,10 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="flex items-center gap-2 sm:gap-3">
             {/* Real Local Optimizer Status (Phase 3 Active Connection) */}
             <div
-              className={`hidden lg:flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-mono border ${
+              className={`hidden lg:flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono font-bold uppercase tracking-wider border-2 border-[#171717] shadow-[1.5px_1.5px_0px_#171717] ${
                 isOllamaReady
-                  ? 'bg-cyan-950/60 border-cyan-500/30 text-cyan-300'
-                  : 'bg-[#0c1424] border-white/5 text-slate-400'
+                  ? 'bg-[#FFFFFF] text-[#171717]'
+                  : 'bg-[#FDF2F2] border-[#E53935] text-[#E53935]'
               }`}
               title={
                 isOllamaReady
@@ -85,21 +87,21 @@ export const Header: React.FC<HeaderProps> = ({
                   : ollamaStatus?.error || 'Local Ollama model offline'
               }
             >
-              <Cpu className={`w-3.5 h-3.5 ${isOllamaReady ? 'text-cyan-400' : 'text-slate-500'}`} />
+              <Cpu className={`w-3.5 h-3.5 ${isOllamaReady ? 'text-[#2457C5]' : 'text-[#E53935]'}`} />
               <span>Local LLM:</span>
-              <span className={`font-sans text-[11px] ${isOllamaReady ? 'text-cyan-200 font-medium' : 'text-amber-400/90'}`}>
+              <span className={`font-mono text-[11px] ${isOllamaReady ? 'text-[#2457C5]' : 'text-[#E53935]'}`}>
                 {isOllamaReady ? `Connected (${ollamaStatus?.model || 'qwen2.5:1.5b'})` : 'Offline / Standby'}
               </span>
             </div>
 
             {/* Main LLM Gateway Status (Marked clearly as Disconnected in Phase 3) */}
             <div
-              className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-mono bg-[#0c1424] border border-white/5 text-slate-400"
+              className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono font-bold uppercase tracking-wider bg-[#E7E3D9] border-2 border-[#171717] text-[#4A4A4A] shadow-[1.5px_1.5px_0px_#171717]"
               title="Cloud frontier LLM gateway scheduled for Phase 4"
             >
-              <Server className="w-3.5 h-3.5 text-slate-500" />
+              <Server className="w-3.5 h-3.5 text-[#717171]" />
               <span>Main LLM:</span>
-              <span className="text-slate-500 font-sans text-[11px]">Disconnected (Phase 4)</span>
+              <span className="text-[#717171] font-mono text-[11px]">Disconnected (Phase 4)</span>
             </div>
 
             {/* FastAPI Backend Status */}
@@ -117,13 +119,13 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         {/* Mobile Sub-bar for Connection Status */}
-        <div className="lg:hidden flex items-center justify-between py-2 border-t border-white/[0.04] text-[10px] text-slate-400 font-mono">
+        <div className="lg:hidden flex items-center justify-between py-2 border-t border-[#171717] text-[10px] text-[#4A4A4A] font-mono font-bold uppercase tracking-wider">
           <div className="flex items-center gap-1.5">
-            <span className={`w-1.5 h-1.5 rounded-full ${isOllamaReady ? 'bg-cyan-400' : 'bg-amber-400'}`} />
+            <span className={`w-2 h-2 ${isOllamaReady ? 'bg-[#2457C5]' : 'bg-[#E53935]'}`} />
             <span>Local LLM: {isOllamaReady ? 'Online (qwen2.5:1.5b)' : 'Offline'}</span>
           </div>
           <div className="flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-slate-500" />
+            <span className="w-2 h-2 bg-[#717171]" />
             <span>Main Gateway: Standby</span>
           </div>
         </div>
@@ -131,3 +133,4 @@ export const Header: React.FC<HeaderProps> = ({
     </header>
   );
 };
+

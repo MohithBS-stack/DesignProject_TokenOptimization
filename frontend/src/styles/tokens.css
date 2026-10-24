@@ -1,41 +1,56 @@
 /**
- * Argus Design Tokens
- * Surface hierarchy: Dark navy surfaces with restrained cyan technical accents
+ * Argus Bauhaus Design Tokens
+ * Classic Bauhaus modernism: Warm ivory surfaces, deep black typography,
+ * crisp borders, and geometric Red (#E53935), Blue (#2457C5), and Yellow (#F2C230) accents.
  */
 
 :root {
   /* Surfaces */
-  --surface-base: #060a12;
-  --surface-subtle: #0a101d;
-  --surface-card: #0e1626;
-  --surface-panel: #131e34;
-  --surface-elevated: #1a2947;
-  --surface-hover: #213459;
+  --surface-base: #F3F0E8;
+  --surface-subtle: #E7E3D9;
+  --surface-card: #FFFFFF;
+  --surface-panel: #FFFFFF;
+  --surface-elevated: #FAF8F5;
+  --surface-hover: #ECE8DD;
+  --surface-dark: #171717;
+
+  /* Bauhaus Primary Accents */
+  --bauhaus-red: #E53935;
+  --bauhaus-blue: #2457C5;
+  --bauhaus-yellow: #F2C230;
+  --bauhaus-black: #171717;
+  --bauhaus-white: #FFFFFF;
+  --bauhaus-muted: #E7E3D9;
+  --bauhaus-dark-muted: #4A4A4A;
 
   /* Borders */
-  --border-subtle: rgba(255, 255, 255, 0.07);
-  --border-default: rgba(255, 255, 255, 0.12);
-  --border-accent: rgba(34, 211, 238, 0.4);
-  --border-accent-glow: rgba(6, 182, 212, 0.25);
-
-  /* Accents */
-  --accent-cyan-subtle: rgba(6, 182, 212, 0.12);
-  --accent-cyan: #06b6d4;
-  --accent-cyan-bright: #22d3ee;
-  --accent-cyan-dark: #0891b2;
+  --border-subtle: #D8D3C5;
+  --border-default: #171717;
+  --border-accent: #2457C5;
+  --border-red: #E53935;
+  --border-yellow: #F2C230;
 
   /* Text */
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --text-accent: #38bdf8;
+  --text-primary: #171717;
+  --text-secondary: #4A4A4A;
+  --text-muted: #717171;
+  --text-inverse: #FFFFFF;
 
-  /* Radii */
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
+  /* Radii - Bauhaus is sharp and architectural */
+  --radius-none: 0px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+
+  /* Shadows - Flat geometric offset shadows */
+  --shadow-bauhaus-sm: 2px 2px 0px #171717;
+  --shadow-bauhaus: 3px 3px 0px #171717;
+  --shadow-bauhaus-lg: 5px 5px 0px #171717;
+  --shadow-bauhaus-blue: 3px 3px 0px #2457C5;
+  --shadow-bauhaus-red: 3px 3px 0px #E53935;
+  --shadow-bauhaus-yellow: 3px 3px 0px #F2C230;
 
   /* Focus ring */
-  --focus-ring: 0 0 0 2px #060a12, 0 0 0 4px #06b6d4;
+  --focus-ring: 0 0 0 2px #F3F0E8, 0 0 0 4px #171717;
 }
+

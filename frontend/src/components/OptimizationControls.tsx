@@ -54,24 +54,24 @@ export const OptimizationControls: React.FC<OptimizationControlsProps> = ({
     >
       {/* Local LLM Inference Engine Status Banner */}
       {isOllamaReady ? (
-        <div className="flex items-start gap-2.5 p-3 rounded-lg bg-cyan-950/40 border border-cyan-500/30 text-xs text-cyan-200">
-          <CheckCircle className="w-4 h-4 text-cyan-400 mt-0.5 shrink-0" />
+        <div className="flex items-start gap-2.5 p-3.5 bg-[#FFFFFF] border-2 border-[#2457C5] shadow-[2px_2px_0px_#2457C5] text-xs text-[#171717]">
+          <CheckCircle className="w-4 h-4 text-[#2457C5] mt-0.5 shrink-0" />
           <div className="space-y-0.5">
-            <span className="font-semibold text-cyan-300">
+            <span className="font-bold text-[#2457C5] uppercase tracking-wider font-mono">
               Local LLM Active ({ollamaStatus?.model || 'qwen2.5:1.5b'})
             </span>
-            <p className="text-[11px] text-cyan-200/80 leading-relaxed">
+            <p className="text-[11px] text-[#4A4A4A] leading-relaxed">
               Connected to local Ollama runtime. Real-time prompt optimization runs entirely on your
               machine with zero prompt data sent to the cloud.
             </p>
           </div>
         </div>
       ) : (
-        <div className="flex items-start gap-2.5 p-3 rounded-lg bg-amber-950/40 border border-amber-500/30 text-xs text-amber-200">
-          <AlertCircle className="w-4 h-4 text-amber-400 mt-0.5 shrink-0" />
+        <div className="flex items-start gap-2.5 p-3.5 bg-[#FFFDF0] border-2 border-[#E53935] shadow-[2px_2px_0px_#E53935] text-xs text-[#171717]">
+          <AlertCircle className="w-4 h-4 text-[#E53935] mt-0.5 shrink-0" />
           <div className="space-y-0.5">
-            <span className="font-semibold text-amber-300">Local Model Offline</span>
-            <p className="text-[11px] text-amber-200/80 leading-relaxed">
+            <span className="font-bold text-[#E53935] uppercase tracking-wider font-mono">Local Model Offline</span>
+            <p className="text-[11px] text-[#4A4A4A] leading-relaxed">
               {ollamaStatus?.error ||
                 "Cannot connect to Ollama at http://127.0.0.1:11434. Ensure 'ollama serve' is active and 'qwen2.5:1.5b' is downloaded."}
             </p>
@@ -82,18 +82,18 @@ export const OptimizationControls: React.FC<OptimizationControlsProps> = ({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Mode Selector */}
         <div className="space-y-2">
-          <label className="text-xs font-semibold text-slate-200 flex items-center gap-1.5">
-            <Sliders className="w-3.5 h-3.5 text-cyan-400" />
+          <label className="text-xs font-bold uppercase tracking-wider text-[#171717] font-mono flex items-center gap-1.5">
+            <Sliders className="w-3.5 h-3.5 text-[#171717]" />
             Optimization Mode
           </label>
-          <div className="space-y-1.5">
+          <div className="space-y-2">
             {modes.map((m) => (
               <label
                 key={m.id}
-                className={`flex items-start gap-3 p-2.5 rounded-lg border cursor-pointer transition-all ${
+                className={`flex items-start gap-3 p-3 border-2 cursor-pointer transition-all ${
                   mode === m.id
-                    ? 'bg-cyan-950/50 border-cyan-500/50 text-slate-100'
-                    : 'bg-[#080d19] border-white/5 text-slate-400 hover:border-white/10 hover:bg-[#0c1424]'
+                    ? 'bg-[#FFFDF0] border-[#171717] shadow-[2px_2px_0px_#F2C230] text-[#171717]'
+                    : 'bg-[#FFFFFF] border-[#D8D3C5] text-[#4A4A4A] hover:border-[#171717] hover:bg-[#FAF8F5]'
                 }`}
               >
                 <input
@@ -102,13 +102,13 @@ export const OptimizationControls: React.FC<OptimizationControlsProps> = ({
                   value={m.id}
                   checked={mode === m.id}
                   onChange={() => onModeChange(m.id)}
-                  className="mt-1 text-cyan-500 focus:ring-cyan-400 focus:ring-offset-0 bg-[#080d19] border-white/20"
+                  className="mt-1 text-[#2457C5] focus:ring-[#171717] accent-[#2457C5]"
                 />
                 <div className="space-y-0.5">
-                  <div className="text-xs font-medium text-slate-200 flex items-center gap-1.5">
+                  <div className="text-xs font-bold text-[#171717] uppercase tracking-wide flex items-center gap-1.5">
                     {m.title}
                   </div>
-                  <p className="text-[11px] text-slate-400 leading-snug">{m.desc}</p>
+                  <p className="text-[11px] text-[#717171] leading-snug font-mono">{m.desc}</p>
                 </div>
               </label>
             ))}
@@ -119,10 +119,10 @@ export const OptimizationControls: React.FC<OptimizationControlsProps> = ({
         <div className="flex flex-col justify-between space-y-4">
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <label htmlFor="target-model-select" className="text-xs font-semibold text-slate-200">
+              <label htmlFor="target-model-select" className="text-xs font-bold uppercase tracking-wider text-[#171717] font-mono">
                 Target Main LLM (Illustrative)
               </label>
-              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 bg-[#080d19] px-1.5 py-0.5 rounded border border-white/5">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#171717] bg-[#E7E3D9] px-2 py-0.5 border border-[#171717] shadow-[1px_1px_0px_#171717]">
                 Phase 4 Gateway
               </span>
             </div>
@@ -131,16 +131,16 @@ export const OptimizationControls: React.FC<OptimizationControlsProps> = ({
               id="target-model-select"
               value={targetModel}
               onChange={(e) => onTargetModelChange(e.target.value as TargetModel)}
-              className="w-full p-2.5 rounded-lg bg-[#080d19] border border-white/10 text-slate-200 text-xs font-medium focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30 transition-all cursor-pointer"
+              className="w-full p-2.5 bg-[#FFFFFF] border-2 border-[#171717] text-[#171717] text-xs font-mono font-bold shadow-[2px_2px_0px_#171717] focus:outline-none focus:ring-2 focus:ring-[#2457C5] transition-all cursor-pointer"
             >
               {ILLUSTRATIVE_MODELS.map((model) => (
-                <option key={model.id} value={model.id} className="bg-[#0b1324] text-slate-200">
+                <option key={model.id} value={model.id} className="bg-[#FFFFFF] text-[#171717]">
                   {model.name} ({model.provider}) &bull; {model.contextWindow}
                 </option>
               ))}
             </select>
 
-            <p className="text-[11px] text-slate-500 leading-relaxed">
+            <p className="text-[11px] text-[#717171] leading-relaxed font-mono">
               Select the intended destination model. In Phase 4, Argus will tailor the compression
               dialect to the specific frontier model's tokenizer.
             </p>
@@ -151,18 +151,18 @@ export const OptimizationControls: React.FC<OptimizationControlsProps> = ({
             <Button
               variant="primary"
               size="lg"
-              className="w-full font-semibold"
+              className="w-full font-black tracking-wider text-xs py-3.5 bg-[#2457C5] hover:bg-[#171717] text-[#FFFFFF] border-2 border-[#171717] shadow-[3px_3px_0px_#171717]"
               onClick={onOptimize}
               disabled={disabled || isLoading}
               isLoading={isLoading}
             >
-              <Zap className="w-4 h-4 text-navy-950" />
+              <Zap className="w-4 h-4 text-[#F2C230]" />
               <span>{isLoading ? 'Optimizing with Local LLM...' : 'Optimize Prompt'}</span>
             </Button>
 
             {disabled && !isLoading && (
-              <p className="text-[11px] text-slate-500 text-center mt-2 flex items-center justify-center gap-1">
-                <ShieldAlert className="w-3 h-3 text-slate-500" />
+              <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#717171] text-center mt-2.5 flex items-center justify-center gap-1.5">
+                <ShieldAlert className="w-3.5 h-3.5 text-[#E53935]" />
                 Enter prompt text above to enable optimization
               </p>
             )}
@@ -172,3 +172,4 @@ export const OptimizationControls: React.FC<OptimizationControlsProps> = ({
     </Card>
   );
 };
+

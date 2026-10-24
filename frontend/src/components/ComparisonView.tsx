@@ -56,43 +56,43 @@ export const ComparisonView: React.FC<ComparisonViewProps> = ({
   return (
     <div className="space-y-4">
       {/* Header bar with comparison summary */}
-      <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-xl bg-[#0a1222] border border-white/5">
+      <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 bg-[#FFFFFF] border-2 border-[#171717] shadow-[2px_2px_0px_#171717]">
         <div className="flex items-center gap-2">
-          <Layers className="w-4 h-4 text-cyan-400" />
-          <span className="text-sm font-semibold text-slate-100">
+          <Layers className="w-4 h-4 text-[#2457C5]" />
+          <span className="text-sm font-bold uppercase tracking-wider text-[#171717] font-mono">
             Prompt Comparison & Diff View
           </span>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-950 text-cyan-300 border border-cyan-500/30 uppercase tracking-wider">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-widest px-2 py-0.5 bg-[#E7E3D9] text-[#171717] border border-[#171717] shadow-[1px_1px_0px_#171717]">
             Strategy: {strategy}
           </span>
           {isPreserved && (
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-500/30">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-widest px-2 py-0.5 bg-[#FFFDF0] text-[#171717] border border-[#171717] shadow-[1px_1px_0px_#F2C230]">
               Preserved
             </span>
           )}
           {validationStatus === 'fallback' && (
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-950 text-amber-300 border border-amber-500/30">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-widest px-2 py-0.5 bg-[#FDF2F2] text-[#E53935] border border-[#E53935]">
               Fallback Baseline
             </span>
           )}
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5 text-xs font-mono bg-[#060a12] px-2.5 py-1 rounded-md border border-white/10 text-slate-300">
+          <div className="flex items-center gap-1.5 text-xs font-mono font-bold bg-[#FAF8F5] px-3 py-1.5 border-2 border-[#171717] text-[#171717] shadow-[1.5px_1.5px_0px_#171717]">
             <span>{originalMetrics.estimatedTokens} est. tokens</span>
-            <ArrowRight className="w-3.5 h-3.5 text-cyan-400" />
-            <span className={tokenSavings >= 0 ? 'text-cyan-300 font-semibold' : 'text-amber-300 font-semibold'}>
+            <ArrowRight className="w-3.5 h-3.5 text-[#2457C5]" />
+            <span className={tokenSavings >= 0 ? 'text-[#2457C5] font-black' : 'text-[#E53935] font-black'}>
               {optimizedMetrics.estimatedTokens} est. tokens
             </span>
           </div>
 
           <div
-            className={`text-xs font-mono px-2 py-1 rounded-md font-semibold ${
+            className={`text-xs font-mono uppercase tracking-wider px-2.5 py-1.5 font-bold border-2 border-[#171717] shadow-[1.5px_1.5px_0px_#171717] ${
               tokenSavings > 0
-                ? 'bg-emerald-950/60 text-emerald-400 border border-emerald-500/30'
+                ? 'bg-[#2457C5] text-[#FFFFFF]'
                 : tokenSavings < 0
-                ? 'bg-amber-950/60 text-amber-400 border border-amber-500/30'
-                : 'bg-slate-800 text-slate-300 border border-slate-700'
+                ? 'bg-[#F2C230] text-[#171717]'
+                : 'bg-[#E7E3D9] text-[#171717]'
             }`}
           >
             {tokenSavings > 0
@@ -111,17 +111,17 @@ export const ComparisonView: React.FC<ComparisonViewProps> = ({
           title="Original Prompt (Pre-Optimization)"
           subtitle="Reference input payload"
           badge={
-            <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-white/10">
+            <span className="text-[11px] font-mono font-bold px-2 py-0.5 bg-[#E7E3D9] text-[#171717] border border-[#171717] shadow-[1px_1px_0px_#171717]">
               ~{originalMetrics.estimatedTokens} tokens (est.)
             </span>
           }
-          className="flex flex-col h-full border-white/5 bg-[#080d19]"
+          className="flex flex-col h-full bg-[#FFFFFF]"
         >
-          <div className="flex-1 p-3.5 rounded-lg bg-[#050912] border border-white/5 text-slate-300 text-xs font-mono whitespace-pre-wrap leading-relaxed overflow-y-auto max-h-[360px] min-h-[220px]">
+          <div className="flex-1 p-3.5 bg-[#FAF8F5] border-2 border-[#D8D3C5] text-[#171717] text-xs font-mono whitespace-pre-wrap leading-relaxed overflow-y-auto max-h-[360px] min-h-[220px]">
             {originalPrompt}
           </div>
 
-          <div className="mt-2 flex items-center justify-between text-[10px] text-slate-500 font-mono">
+          <div className="mt-2.5 flex items-center justify-between text-[10px] text-[#717171] font-mono font-bold uppercase tracking-wider">
             <span>{originalMetrics.charCount} characters</span>
             <span>Unmodified User Input</span>
           </div>
@@ -141,17 +141,17 @@ export const ComparisonView: React.FC<ComparisonViewProps> = ({
                 variant="ghost"
                 size="sm"
                 onClick={handleCopy}
-                className="h-6 px-2 text-[11px] text-cyan-300 hover:bg-cyan-500/10 border border-cyan-500/20"
+                className="h-7 px-2.5 text-[11px] bg-[#FFFFFF] hover:bg-[#F2C230] text-[#171717] border-2 border-[#171717] shadow-[1px_1px_0px_#171717]"
                 aria-label="Copy optimized prompt"
               >
                 {copied ? (
                   <>
-                    <Check className="w-3 h-3 text-emerald-400" />
-                    <span className="text-emerald-400">Copied</span>
+                    <Check className="w-3.5 h-3.5 text-[#2457C5]" />
+                    <span className="text-[#2457C5] font-bold">Copied</span>
                   </>
                 ) : (
                   <>
-                    <Copy className="w-3 h-3" />
+                    <Copy className="w-3.5 h-3.5" />
                     <span>Copy</span>
                   </>
                 )}
@@ -159,38 +159,38 @@ export const ComparisonView: React.FC<ComparisonViewProps> = ({
               <button
                 type="button"
                 onClick={() => setIsEditing(!isEditing)}
-                className="flex items-center gap-1 h-6 px-2 text-[11px] rounded font-medium bg-[#0b172a] hover:bg-[#112340] text-slate-300 border border-white/10 transition-colors"
+                className="flex items-center gap-1 h-7 px-2.5 text-[11px] font-bold uppercase tracking-wider font-mono bg-[#E7E3D9] hover:bg-[#171717] hover:text-[#FFFFFF] text-[#171717] border-2 border-[#171717] shadow-[1px_1px_0px_#171717] transition-colors cursor-pointer"
                 title="Toggle manual edits"
               >
-                <Edit3 className="w-3 h-3" />
+                <Edit3 className="w-3.5 h-3.5" />
                 <span>{isEditing ? 'Done Editing' : 'Edit'}</span>
               </button>
-              <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-500/30 font-semibold">
+              <span className="text-[11px] font-mono font-bold px-2 py-0.5 bg-[#FFFDF0] text-[#171717] border-2 border-[#171717] shadow-[1px_1px_0px_#171717]">
                 ~{optimizedMetrics.estimatedTokens} tokens (est.)
               </span>
             </div>
           }
-          className="flex flex-col h-full border-cyan-500/20 bg-[#091122]"
+          className="flex flex-col h-full bg-[#FFFFFF]"
         >
           {isEditing ? (
             <textarea
               value={optimizedPrompt}
               onChange={(e) => onOptimizedPromptChange(e.target.value)}
-              className="flex-1 p-3.5 rounded-lg bg-[#060a12] border border-cyan-500/40 text-cyan-100 text-xs font-mono whitespace-pre-wrap leading-relaxed resize-none focus:outline-none focus:ring-1 focus:ring-cyan-400 max-h-[360px] min-h-[220px]"
+              className="flex-1 p-3.5 bg-[#FFFFFF] border-2 border-[#2457C5] text-[#171717] text-xs font-mono whitespace-pre-wrap leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-[#2457C5] shadow-[2px_2px_0px_#2457C5] max-h-[360px] min-h-[220px]"
               aria-label="Editable optimized prompt"
             />
           ) : (
-            <div className="flex-1 p-3.5 rounded-lg bg-[#060a12] border border-cyan-500/20 text-cyan-100 text-xs font-mono whitespace-pre-wrap leading-relaxed overflow-y-auto max-h-[360px] min-h-[220px] selection:bg-cyan-500/30 selection:text-cyan-200">
+            <div className="flex-1 p-3.5 bg-[#FFFFFF] border-2 border-[#171717] text-[#171717] text-xs font-mono whitespace-pre-wrap leading-relaxed overflow-y-auto max-h-[360px] min-h-[220px] shadow-[inset_1px_1px_0px_rgba(0,0,0,0.05)] selection:bg-[#F2C230] selection:text-[#171717]">
               {optimizedPrompt}
             </div>
           )}
 
-          <div className="mt-2 flex items-center justify-between text-[10px] text-slate-500 font-mono">
-            <span className="flex items-center gap-1 text-cyan-400">
-              <FileCode className="w-3 h-3" />
+          <div className="mt-2.5 flex items-center justify-between text-[10px] text-[#717171] font-mono font-bold uppercase tracking-wider">
+            <span className="flex items-center gap-1 text-[#2457C5]">
+              <FileCode className="w-3.5 h-3.5" />
               <span>{isEditing ? 'Manual fine-tuning active' : 'Click "Edit" to modify before copying'}</span>
             </span>
-            <span className="text-slate-400">
+            <span className="text-[#4A4A4A]">
               {isPreserved
                 ? 'Prompt preserved as safe baseline'
                 : `Local Engine: ${model} · Strategy: ${strategy}`}
@@ -200,10 +200,11 @@ export const ComparisonView: React.FC<ComparisonViewProps> = ({
       </div>
 
       {/* Token Approximation Notice */}
-      <div className="text-[11px] text-slate-500 italic px-1">
+      <div className="text-[11px] text-[#717171] font-mono uppercase tracking-wider px-1">
         * Token counts are approximations based on standard ~4 characters per token heuristics. Actual
         tokenization and cost savings are verified upon provider dispatch in Phase 4.
       </div>
     </div>
   );
 };
+

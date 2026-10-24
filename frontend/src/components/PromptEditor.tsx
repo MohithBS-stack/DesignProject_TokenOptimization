@@ -34,7 +34,7 @@ export const PromptEditor: React.FC<PromptEditorProps> = ({
               size="sm"
               onClick={onClear}
               disabled={disabled}
-              className="text-slate-400 hover:text-red-400 text-xs py-1 px-2"
+              className="text-[#171717] hover:bg-[#FDF2F2] hover:text-[#E53935] hover:border-[#E53935] text-xs py-1 px-2.5 font-bold"
               title="Clear current prompt"
             >
               <Trash2 className="w-3.5 h-3.5" />
@@ -46,30 +46,30 @@ export const PromptEditor: React.FC<PromptEditorProps> = ({
       className="flex flex-col h-full"
     >
       {/* Preset Example Selectors */}
-      <div className="mb-3 space-y-1.5">
-        <div className="flex items-center justify-between text-xs text-slate-400">
-          <span className="flex items-center gap-1.5 font-medium text-slate-300">
-            <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+      <div className="mb-4 space-y-2">
+        <div className="flex items-center justify-between text-xs">
+          <span className="flex items-center gap-1.5 font-bold uppercase tracking-wider text-[#171717] font-mono">
+            <Sparkles className="w-3.5 h-3.5 text-[#2457C5]" />
             Load Sample Prompts
           </span>
-          <span className="text-[11px] text-slate-500">Click to inspect demo data</span>
+          <span className="text-[11px] font-mono text-[#717171] uppercase tracking-wider">Click to inspect demo data</span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
           {EXAMPLE_PROMPTS.map((ex) => (
             <button
               key={ex.id}
               type="button"
               disabled={disabled}
               onClick={() => onSelectExample(ex)}
-              className="flex items-start gap-2 p-2 rounded-lg bg-[#080d19] border border-white/5 hover:border-cyan-500/30 hover:bg-[#0d1627] text-left transition-all cursor-pointer group disabled:opacity-50"
+              className="flex items-start gap-2 p-2.5 bg-[#FFFFFF] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] hover:bg-[#F2C230] text-left transition-all cursor-pointer group disabled:opacity-40 active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"
             >
-              <FileText className="w-4 h-4 text-cyan-400 mt-0.5 shrink-0 group-hover:scale-105 transition-transform" />
+              <FileText className="w-4 h-4 text-[#2457C5] group-hover:text-[#171717] mt-0.5 shrink-0 transition-colors" />
               <div className="overflow-hidden">
-                <div className="text-xs font-medium text-slate-200 truncate group-hover:text-cyan-300">
+                <div className="text-xs font-bold text-[#171717] truncate font-sans">
                   {ex.title}
                 </div>
-                <div className="text-[10px] text-slate-500 truncate">{ex.category}</div>
+                <div className="text-[10px] font-mono text-[#717171] group-hover:text-[#171717] uppercase tracking-wider truncate">{ex.category}</div>
               </div>
             </button>
           ))}
@@ -83,26 +83,26 @@ export const PromptEditor: React.FC<PromptEditorProps> = ({
           onChange={(e) => onChange(e.target.value)}
           disabled={disabled}
           placeholder="Enter a prompt with instructions, context, formatting requirements, or guidelines..."
-          className="w-full flex-1 p-3.5 rounded-lg bg-[#080d19] border border-white/10 text-slate-100 placeholder:text-slate-600 text-sm font-mono leading-relaxed resize-none focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30 transition-all disabled:opacity-50"
+          className="w-full flex-1 p-3.5 bg-[#FFFFFF] border-2 border-[#171717] text-[#171717] placeholder:text-[#888888] text-sm font-mono leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-[#2457C5] focus:border-[#2457C5] shadow-[2px_2px_0px_#171717] transition-all disabled:opacity-50"
           rows={10}
           aria-label="Raw prompt text input"
         />
 
         {/* Counter & Token Approximation Bar */}
-        <div className="mt-2.5 pt-2 border-t border-white/5 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400 font-mono">
+        <div className="mt-3 pt-2.5 border-t-2 border-[#171717] flex flex-wrap items-center justify-between gap-2 text-xs text-[#4A4A4A] font-mono font-bold uppercase tracking-wider">
           <div className="flex items-center gap-3">
             <span>
-              <strong className="text-slate-200">{metrics.charCount}</strong> chars
+              <strong className="text-[#171717] font-black">{metrics.charCount}</strong> chars
             </span>
-            <span className="text-slate-600">&bull;</span>
+            <span className="text-[#171717]">&bull;</span>
             <span title="Estimated using ~4 characters/token approximation">
-              ~<strong className="text-cyan-300">{metrics.estimatedTokens}</strong> tokens
-              <span className="text-[10px] text-slate-500 ml-1">(est.)</span>
+              ~<strong className="text-[#2457C5] font-black">{metrics.estimatedTokens}</strong> tokens
+              <span className="text-[10px] text-[#717171] ml-1">(est.)</span>
             </span>
           </div>
 
-          <div className="flex items-center gap-1 text-[11px] text-slate-500">
-            <HelpCircle className="w-3 h-3" />
+          <div className="flex items-center gap-1 text-[11px] text-[#717171]">
+            <HelpCircle className="w-3.5 h-3.5 text-[#171717]" />
             <span>~4 chars/token heuristic</span>
           </div>
         </div>
@@ -110,3 +110,4 @@ export const PromptEditor: React.FC<PromptEditorProps> = ({
     </Card>
   );
 };
+

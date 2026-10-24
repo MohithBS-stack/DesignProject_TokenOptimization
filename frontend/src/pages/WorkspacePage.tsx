@@ -90,26 +90,26 @@ export const WorkspacePage: React.FC<WorkspacePageProps> = ({ ollamaStatus }) =>
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       {/* Workspace Header / Banner */}
-      <section className="space-y-2">
+      <section className="space-y-3">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-cyan-950/60 text-cyan-300 border border-cyan-500/30">
-              <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-mono font-bold uppercase tracking-wider bg-[#FFFFFF] text-[#171717] border-2 border-[#171717] shadow-[2px_2px_0px_#171717]">
+              <Sparkles className="w-3.5 h-3.5 text-[#2457C5]" />
               <span>Argus Prompt Optimization Workspace</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white mt-2">
+            <h1 className="text-2xl sm:text-4xl font-black tracking-tight text-[#171717] uppercase font-heading mt-3">
               Optimize Input Tokens & Preserve Constraints
             </h1>
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-xs font-mono text-slate-400 bg-[#0c1424] px-3 py-1.5 rounded-lg border border-white/5 flex items-center gap-1.5">
-              <Cpu className="w-3.5 h-3.5 text-cyan-400" />
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#171717] bg-[#E7E3D9] px-3.5 py-2 border-2 border-[#171717] shadow-[2px_2px_0px_#171717] flex items-center gap-2">
+              <Cpu className="w-3.5 h-3.5 text-[#2457C5]" />
               <span>Local Engine: {ollamaStatus?.model || 'qwen2.5:1.5b'}</span>
             </span>
           </div>
         </div>
-        <p className="text-xs sm:text-sm text-slate-400 max-w-3xl leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#4A4A4A] max-w-3xl leading-relaxed font-sans">
           Prepare, compress, and refine prompts using local neural inference before dispatching to
           frontier LLMs. Select an optimization profile, evaluate token reduction, and inspect
           side-by-side output.
@@ -120,20 +120,20 @@ export const WorkspacePage: React.FC<WorkspacePageProps> = ({ ollamaStatus }) =>
       {status === 'error' && errorMessage && (
         <div
           role="alert"
-          className="flex items-start justify-between gap-3 p-4 rounded-xl bg-red-950/40 border border-red-500/30 text-red-200"
+          className="flex items-start justify-between gap-3 p-4 bg-[#FFFDF0] border-2 border-[#E53935] shadow-[3px_3px_0px_#E53935] text-[#171717]"
         >
-          <div className="flex items-start gap-2.5">
-            <AlertTriangle className="w-5 h-5 text-red-400 mt-0.5 shrink-0" />
+          <div className="flex items-start gap-3">
+            <AlertTriangle className="w-5 h-5 text-[#E53935] mt-0.5 shrink-0" />
             <div>
-              <h4 className="text-sm font-semibold text-red-300">Optimization Notice</h4>
-              <p className="text-xs text-red-200/80 mt-0.5 leading-relaxed">{errorMessage}</p>
+              <h4 className="text-sm font-bold uppercase tracking-wider text-[#E53935] font-mono">Optimization Notice</h4>
+              <p className="text-xs text-[#171717] mt-1 leading-relaxed font-mono">{errorMessage}</p>
             </div>
           </div>
           <Button
             variant="ghost"
             size="sm"
             onClick={() => setErrorMessage(null)}
-            className="text-xs text-red-300 hover:text-white shrink-0"
+            className="text-xs font-bold bg-[#FFFFFF] border border-[#171717] hover:bg-[#FDF2F2] hover:text-[#E53935] shrink-0"
           >
             Dismiss
           </Button>
@@ -173,23 +173,23 @@ export const WorkspacePage: React.FC<WorkspacePageProps> = ({ ollamaStatus }) =>
 
       {/* Loading State Animation */}
       {status === 'optimizing' && (
-        <Card className="p-8 text-center border-cyan-500/30 bg-[#091222]">
+        <Card className="p-8 text-center border-2 border-[#171717] bg-[#FFFFFF] shadow-[4px_4px_0px_#2457C5]">
           <div className="max-w-md mx-auto space-y-4">
-            <div className="w-12 h-12 mx-auto rounded-xl bg-cyan-950/80 border border-cyan-500/40 flex items-center justify-center text-cyan-400 animate-pulse">
-              <Zap className="w-6 h-6 animate-bounce" />
+            <div className="w-14 h-14 mx-auto bg-[#F2C230] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] flex items-center justify-center text-[#171717] animate-pulse">
+              <Zap className="w-7 h-7 text-[#171717] animate-bounce" />
             </div>
-            <div className="space-y-1">
-              <h3 className="text-base font-semibold text-slate-100">
+            <div className="space-y-1.5">
+              <h3 className="text-base font-bold text-[#171717] uppercase tracking-wider font-heading">
                 Optimizing Prompt with {mode.toUpperCase()} Profile...
               </h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Local model <code className="text-cyan-300 font-mono">{ollamaStatus?.model || 'qwen2.5:1.5b'}</code> is
+              <p className="text-xs text-[#4A4A4A] leading-relaxed">
+                Local model <code className="text-[#2457C5] font-mono font-bold bg-[#FAF8F5] px-1 py-0.5 border border-[#171717]">{ollamaStatus?.model || 'qwen2.5:1.5b'}</code> is
                 extracting constraints and pruning tokens.
               </p>
             </div>
-            <div className="flex items-center justify-center gap-4 text-[11px] font-mono text-cyan-300">
-              <span className="flex items-center gap-1">
-                <Clock className="w-3 h-3 animate-spin" /> Ollama local inference in progress
+            <div className="flex items-center justify-center gap-4 text-[11px] font-mono font-bold uppercase tracking-wider text-[#2457C5]">
+              <span className="flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5 animate-spin" /> Ollama local inference in progress
               </span>
             </div>
           </div>
@@ -222,16 +222,16 @@ export const WorkspacePage: React.FC<WorkspacePageProps> = ({ ollamaStatus }) =>
 
       {/* Empty State / Initial Guidance (When idle and no result yet) */}
       {status === 'idle' && !result && (
-        <Card className="p-8 border-dashed border-white/10 bg-[#070d18] text-center">
+        <Card className="p-10 border-2 border-dashed border-[#171717] bg-[#FAF8F5] text-center shadow-none">
           <div className="max-w-md mx-auto space-y-4">
-            <div className="w-12 h-12 mx-auto rounded-full bg-[#0e172a] border border-white/10 flex items-center justify-center text-slate-400">
-              <Zap className="w-5 h-5 text-cyan-400" />
+            <div className="w-14 h-14 mx-auto bg-[#FFFFFF] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] flex items-center justify-center text-[#171717]">
+              <Zap className="w-6 h-6 text-[#2457C5]" />
             </div>
             <div className="space-y-1.5">
-              <h3 className="text-sm font-semibold text-slate-200">
+              <h3 className="text-sm font-bold uppercase tracking-wider text-[#171717] font-mono">
                 Prompt Optimization Workspace Ready
               </h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <p className="text-xs text-[#717171] leading-relaxed font-mono">
                 Paste a prompt or select a sample above to optimize tokens with local neural inference.
               </p>
             </div>
@@ -240,9 +240,9 @@ export const WorkspacePage: React.FC<WorkspacePageProps> = ({ ollamaStatus }) =>
                 variant="outline"
                 size="sm"
                 onClick={() => handleSelectExample(EXAMPLE_PROMPTS[0])}
-                className="text-xs"
+                className="text-xs font-bold"
               >
-                <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+                <Sparkles className="w-3.5 h-3.5 text-[#2457C5]" />
                 <span>Try Example: Code Review</span>
               </Button>
             </div>
@@ -252,3 +252,4 @@ export const WorkspacePage: React.FC<WorkspacePageProps> = ({ ollamaStatus }) =>
     </div>
   );
 };
+

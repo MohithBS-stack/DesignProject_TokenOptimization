@@ -16,23 +16,23 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const baseClasses =
-    'inline-flex items-center justify-center font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#060a12] disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer';
+    'inline-flex items-center justify-center font-bold tracking-tight transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#171717] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F3F0E8] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer uppercase text-xs';
 
   const sizeClasses = {
-    sm: 'text-xs px-2.5 py-1.5 rounded-md gap-1.5',
-    md: 'text-sm px-4 py-2 rounded-lg gap-2',
-    lg: 'text-base px-5 py-2.5 rounded-lg gap-2.5',
+    sm: 'px-2.5 py-1.5 gap-1.5 text-[11px]',
+    md: 'px-4 py-2 gap-2 text-xs',
+    lg: 'px-6 py-3 gap-2.5 text-sm tracking-wide',
   };
 
   const variantClasses = {
     primary:
-      'bg-cyan-500 hover:bg-cyan-400 text-navy-950 font-semibold shadow-sm shadow-cyan-950/50 active:translate-y-px',
+      'bg-[#171717] hover:bg-[#2457C5] text-[#FFFFFF] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none',
     secondary:
-      'bg-[#131e34] hover:bg-[#1a2947] text-slate-100 border border-white/10 active:translate-y-px',
+      'bg-[#FFFFFF] hover:bg-[#E7E3D9] text-[#171717] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none',
     outline:
-      'border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10 hover:border-cyan-400 active:translate-y-px',
+      'bg-[#FFFFFF] hover:bg-[#F2C230] text-[#171717] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none',
     ghost:
-      'text-slate-400 hover:text-slate-100 hover:bg-white/5 active:translate-y-px',
+      'text-[#171717] hover:bg-[#E7E3D9] border-2 border-transparent hover:border-[#171717] active:translate-x-[1px] active:translate-y-[1px]',
   };
 
   return (
@@ -68,3 +68,4 @@ export const Button: React.FC<ButtonProps> = ({
     </button>
   );
 };
+

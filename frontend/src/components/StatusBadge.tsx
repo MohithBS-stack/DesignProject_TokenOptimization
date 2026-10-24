@@ -8,20 +8,20 @@ export interface StatusBadgeProps {
 export const StatusBadge: React.FC<StatusBadgeProps> = ({ status, label }) => {
   const configs = {
     online: {
-      bg: 'bg-cyan-950/60 border-cyan-500/30 text-cyan-300',
-      dot: 'bg-cyan-400',
+      bg: 'bg-[#FFFFFF] border-[#171717] text-[#171717]',
+      dot: 'bg-[#2457C5]',
     },
     offline: {
-      bg: 'bg-red-950/40 border-red-500/30 text-red-300',
-      dot: 'bg-red-400',
+      bg: 'bg-[#FDF2F2] border-[#E53935] text-[#E53935]',
+      dot: 'bg-[#E53935]',
     },
     warning: {
-      bg: 'bg-amber-950/40 border-amber-500/30 text-amber-300',
-      dot: 'bg-amber-400',
+      bg: 'bg-[#FFFDF0] border-[#171717] text-[#171717]',
+      dot: 'bg-[#F2C230]',
     },
     idle: {
-      bg: 'bg-slate-900 border-white/10 text-slate-300',
-      dot: 'bg-slate-400',
+      bg: 'bg-[#E7E3D9] border-[#171717] text-[#4A4A4A]',
+      dot: 'bg-[#717171]',
     },
   };
 
@@ -29,10 +29,11 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({ status, label }) => {
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-mono font-medium border ${config.bg}`}
+      className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono font-bold tracking-wider uppercase border shadow-[1.5px_1.5px_0px_#171717] ${config.bg}`}
     >
-      <span className={`w-1.5 h-1.5 rounded-full ${config.dot}`} />
+      <span className={`w-2 h-2 shrink-0 ${config.dot}`} />
       {label}
     </span>
   );
 };
+
